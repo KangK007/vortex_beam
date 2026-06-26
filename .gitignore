@@ -47,9 +47,8 @@ legacy_code/PYTHON/**/run_turbulence_scan_summary.npz
 legacy_code/PYTHON/**/run_turbulence_scan_params.json
 
 # Large experimental/raw data should stay out of GitHub by default
-data/
-raw/
-original/
-experiment/
-measurements/
-
+/data/
+/raw/
+/original/
+/experiment/
+/measurements/
