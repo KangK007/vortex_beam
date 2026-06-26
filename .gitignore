@@ -30,9 +30,15 @@ results/*
 !results/.gitkeep
 !results/figures/
 !results/figures/.gitkeep
+results/figures/*
+!results/figures/.gitkeep
 !results/data/
 !results/data/.gitkeep
+results/data/*
+!results/data/.gitkeep
 !results/logs/
+!results/logs/.gitkeep
+results/logs/*
 !results/logs/.gitkeep
 thesis_figures/*
 !thesis_figures/.gitkeep

@@ -1,4 +1,4 @@
-"""Fig. 4：标量 FVB 与矢量 FVVB 的 OAM 谱对比。
+"""Scalar/vector OAM comparison：标量 FVB 与矢量 FVVB 的 OAM 谱对比。
 
 本脚本在相同 alpha 和 OAM 截断范围下分别计算标量场 U 的 OAM 谱，以及
 FVVB 的总 OAM 谱。该图用于说明矢量偏振结构会改变 OAM 能量分布，不能
@@ -22,11 +22,11 @@ from fvvb_core import (
 )
 
 
-SCRIPT = "fig04_fvb_fvvb_oam_compare"
+SCRIPT = "scalar_vector_oam_comparison"
 
 
 def main() -> None:
-    # 论文参数指示：Fig.4 最终对比图建议 FVB/FVVB 完全共用：
+    # ?????????/?? OAM ???? FVB/FVVB ?????
     # grid_n=400, rho_max_factor=8.0, n_min=-200, n_max=200, lmax=40,
     # nr_fourier=320, nphi_fourier=720，避免截断差异造成假对比。
     params = default_params(grid_n=180, rho_max_factor=8.0, n_min=-60, n_max=60, lmax=6, nr_fourier=140, nphi_fourier=256)
@@ -58,10 +58,10 @@ def main() -> None:
         ax.set_ylabel(r"$\mu_\ell$")
     for ax in axes[-1, :]:
         ax.set_xlabel(r"OAM order $\ell$")
-    fig.suptitle("Fig. 4  FVB/FVVB OAM-spectrum comparison")
-    fig.savefig(out_dir / "fig04_fvb_fvvb_oam_compare.png", dpi=300)
-    save_npz(out_dir, "fig04_fvb_fvvb_oam_compare", alpha_list=np.array(alpha_list), l_list=l_list, fvb=np.array(fvb_spectra), fvvb=np.array(fvvb_spectra))
-    save_params(out_dir, "fig04_fvb_fvvb_oam_compare", {"params": params, "alpha_list": alpha_list, "dx": dx, "dy": dy})
+    fig.suptitle("Scalar/vector OAM comparison  FVB/FVVB OAM-spectrum comparison")
+    fig.savefig(out_dir / "scalar_vector_oam_comparison.png", dpi=300)
+    save_npz(out_dir, "scalar_vector_oam_comparison", alpha_list=np.array(alpha_list), l_list=l_list, fvb=np.array(fvb_spectra), fvvb=np.array(fvvb_spectra))
+    save_params(out_dir, "scalar_vector_oam_comparison", {"params": params, "alpha_list": alpha_list, "dx": dx, "dy": dy})
     plt.close(fig)
 
 

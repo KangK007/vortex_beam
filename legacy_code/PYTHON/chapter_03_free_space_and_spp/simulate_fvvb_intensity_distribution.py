@@ -1,4 +1,4 @@
-"""Fig. 2：不同分数阶拓扑荷 alpha 下 FVVB 的总强度分布。
+"""FVVB intensity distribution：不同分数阶拓扑荷 alpha 下 FVVB 的总强度分布。
 
 本脚本用于论文自由空间 FVVB 强度图。主要流程：设置快速绘图参数 -> 生成
 X/Y/R/PHI 网格 -> 对每个 alpha 构造 Ex/Ey -> 计算总强度 I=|Ex|^2+|Ey|^2
@@ -12,12 +12,12 @@ import numpy as np
 from fvvb_core import default_params, ensure_output_dir, fvvb_field, get_grid_from_params, save_npz, save_params
 
 
-SCRIPT = "fig02_fvvb_intensity"
+SCRIPT = "fvvb_intensity_distribution"
 
 
 def main() -> None:
     # 默认使用快速验证参数，便于逐个脚本自动测试。
-    # 论文参数指示：Fig.2 高分辨率强度图建议设置为：
+    # ???????FVVB ???????????
     # grid_n=400, rho_max_factor=1.5（近场主体）或 3.0（含更大外环窗口），
     # n_min=-200, n_max=200；若要做最终收敛复核，可再试 grid_n=512。
     params = default_params(grid_n=400, rho_max_factor=1.5, n_min=-200, n_max=200)
@@ -44,10 +44,10 @@ def main() -> None:
         ax.set_title(rf"$\alpha={alpha:.1f}$")
         ax.set_xticks([])
         ax.set_yticks([])
-    fig.suptitle("Fig. 2  FVVB intensity distributions")
-    fig.savefig(out_dir / "fig02_fvvb_intensity.png", dpi=500)
-    save_npz(out_dir, "fig02_fvvb_intensity", alpha_list=np.array(alpha_list), X=X, Y=Y, intensity=np.array(intensities))
-    save_params(out_dir, "fig02_fvvb_intensity", {"params": params, "alpha_list": alpha_list, "dx": dx, "dy": dy})
+    fig.suptitle("FVVB intensity distribution  FVVB intensity distributions")
+    fig.savefig(out_dir / "fvvb_intensity_distribution.png", dpi=500)
+    save_npz(out_dir, "fvvb_intensity_distribution", alpha_list=np.array(alpha_list), X=X, Y=Y, intensity=np.array(intensities))
+    save_params(out_dir, "fvvb_intensity_distribution", {"params": params, "alpha_list": alpha_list, "dx": dx, "dy": dy})
     plt.close(fig)
 
 

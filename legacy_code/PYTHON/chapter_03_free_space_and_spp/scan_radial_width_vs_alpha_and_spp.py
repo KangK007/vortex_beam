@@ -1,6 +1,6 @@
-"""Fig. 11：FVVB LG 径向谱宽 sigma_p 随入射 alpha 和 SPP 调制荷 q 的变化。
+"""Radial width vs alpha and SPP：FVVB LG 径向谱宽 sigma_p 随入射 alpha 和 SPP 调制荷 q 的变化。
 
-本脚本与 Fig.9 结构相同，但指标从 OAM 谱宽 sigma_L 换为径向阶 p 的谱宽
+???? OAM ?? alpha/SPP ??????????? OAM ?? sigma_L ????? p ???
 sigma_p。sigma_p 基于 sigma+ 圆偏振分量的 LG 模态投影矩阵 Mpl 计算。"""
 
 from __future__ import annotations
@@ -11,7 +11,7 @@ import numpy as np
 from fvvb_core import default_params, apply_spp_to_vector, ensure_output_dir, fvvb_field, get_grid_from_params, radial_lg_spectrum, radial_width_from_mpl, save_npz, save_params, style_axes
 
 
-SCRIPT = "fig11_radial_width_alpha_spp"
+SCRIPT = "radial_width_vs_alpha_and_spp"
 
 
 def sigma_p_for(alpha: float, fork_ell: float, params, X, Y, R, PHI, dx, dy) -> float:
@@ -27,7 +27,7 @@ def sigma_p_for(alpha: float, fork_ell: float, params, X, Y, R, PHI, dx, dy) -> 
 
 
 def main() -> None:
-    # 论文参数指示：Fig.11 最终 sigma_p 扫描建议设置为：
+    # ??????????? alpha/SPP ????????
     # grid_n=400, rho_max_factor=8.0, n_min=-200, n_max=200, lmax=40, pmax=35；
     # alpha_scan=np.arange(0.1,3.01,0.05)，fork_scan=np.arange(0.0,3.01,0.05)。
     params = default_params(grid_n=100, rho_max_factor=8.0, n_min=-30, n_max=30, lmax=8, pmax=6)
@@ -50,10 +50,10 @@ def main() -> None:
     style_axes(axes[1], r"SPP charge $q$", r"Radial width $\sigma_p$", "(b)")
     axes[0].legend(fontsize=8)
     axes[1].legend(fontsize=8)
-    fig.suptitle("Fig. 11  FVVB radial spectral width")
-    fig.savefig(out_dir / "fig11_radial_width_alpha_spp.png", dpi=300)
-    save_npz(out_dir, "fig11_radial_width_alpha_spp", alpha_scan=alpha_scan, fork_scan=fork_scan, sigma_vs_alpha=sigma_vs_alpha, sigma_vs_fork=sigma_vs_fork)
-    save_params(out_dir, "fig11_radial_width_alpha_spp", {"params": params, "fork_cases": fork_cases, "alpha_cases": alpha_cases, "dx": dx, "dy": dy})
+    fig.suptitle("Radial width vs alpha and SPP  FVVB radial spectral width")
+    fig.savefig(out_dir / "radial_width_vs_alpha_and_spp.png", dpi=300)
+    save_npz(out_dir, "radial_width_vs_alpha_and_spp", alpha_scan=alpha_scan, fork_scan=fork_scan, sigma_vs_alpha=sigma_vs_alpha, sigma_vs_fork=sigma_vs_fork)
+    save_params(out_dir, "radial_width_vs_alpha_and_spp", {"params": params, "fork_cases": fork_cases, "alpha_cases": alpha_cases, "dx": dx, "dy": dy})
     plt.close(fig)
 
 

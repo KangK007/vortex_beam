@@ -1,4 +1,4 @@
-"""Fig. 6：固定入射 alpha，改变 SPP/叉形相位板调制荷 q 后的 FVVB OAM 谱。
+"""OAM spectrum vs SPP charge：固定入射 alpha，改变 SPP/叉形相位板调制荷 q 后的 FVVB OAM 谱。
 
 当前 SPP 实现为在同一计算平面对 Ex/Ey 共同乘以 H(phi)=exp(i*q*phi)。若
 论文文字涉及“SPP 位于中间面并继续传播”，需要另行使用分段传播模型验证。"""
@@ -11,11 +11,11 @@ import numpy as np
 from fvvb_core import default_params, apply_spp_to_vector, ensure_output_dir, fvvb_field, get_grid_from_params, save_npz, save_params, total_oam_spectrum_from_vector
 
 
-SCRIPT = "fig06_oam_spp_varying"
+SCRIPT = "oam_spectrum_vs_spp_charge"
 
 
 def main() -> None:
-    # 论文参数指示：Fig.6 最终 SPP 扫描建议设置为：
+    # ??????????? alpha ? SPP ????????
     # grid_n=400, rho_max_factor=8.0, n_min=-200, n_max=200, lmax=40,
     # nr_fourier=320, nphi_fourier=720；fork_list 可用 [0.1,0.3,0.5,0.7,1.0]
     # 或加密为 np.arange(0.0,1.01,0.1)，并确认当前模型是同一平面等效相位调制。
@@ -39,10 +39,10 @@ def main() -> None:
         ax.grid(True, alpha=0.2)
         ax.set_xlim(l_list[0] - 0.5, l_list[-1] + 0.5)
     axes[0].set_ylabel(r"$\mu_\ell$")
-    fig.suptitle(rf"Fig. 6  FVVB after SPP modulation, incident $\alpha={alpha:.1f}$")
-    fig.savefig(out_dir / "fig06_oam_spp_varying.png", dpi=300)
-    save_npz(out_dir, "fig06_oam_spp_varying", fork_list=np.array(fork_list), l_list=l_list, spectra=np.array(spectra))
-    save_params(out_dir, "fig06_oam_spp_varying", {"params": params, "alpha": alpha, "fork_list": fork_list, "dx": dx, "dy": dy})
+    fig.suptitle(rf"OAM spectrum vs SPP charge  FVVB after SPP modulation, incident $\alpha={alpha:.1f}$")
+    fig.savefig(out_dir / "oam_spectrum_vs_spp_charge.png", dpi=300)
+    save_npz(out_dir, "oam_spectrum_vs_spp_charge", fork_list=np.array(fork_list), l_list=l_list, spectra=np.array(spectra))
+    save_params(out_dir, "oam_spectrum_vs_spp_charge", {"params": params, "alpha": alpha, "fork_list": fork_list, "dx": dx, "dy": dy})
     plt.close(fig)
 
 

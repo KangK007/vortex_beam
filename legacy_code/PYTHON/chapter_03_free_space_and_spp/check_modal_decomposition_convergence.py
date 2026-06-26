@@ -1,4 +1,4 @@
-"""Fig. 8：OAM 方位阶截断 Lmax 与 LG 径向阶截断 Pmax 的收敛性分析。
+"""Modal-decomposition convergence：OAM 方位阶截断 Lmax 与 LG 径向阶截断 Pmax 的收敛性分析。
 
 本脚本比较无 SPP、整数 SPP 和分数阶 SPP 三种情形下，OAM 谱宽 sigma_L、
 径向谱宽 sigma_p 与捕获功率 Pcap 随截断范围变化的趋势。该图用于说明
@@ -25,7 +25,7 @@ from fvvb_core import (
 )
 
 
-SCRIPT = "fig08_modal_convergence"
+SCRIPT = "modal_decomposition_convergence"
 
 
 def compute_case(alpha: float, fork_ell: float, params):
@@ -38,7 +38,7 @@ def compute_case(alpha: float, fork_ell: float, params):
 
 
 def main() -> None:
-    # 论文参数指示：Fig.8 是收敛性图，建议最终设置为：
+    # ??????????????????????
     # grid_n=400, rho_max_factor=8.0, n_min=-200, n_max=200, nr_fourier=320,
     # nphi_fourier=720；lmax_list 可设 [10,20,30,40]，pmax_list 可设 [10,20,30,35]。
     params = default_params(grid_n=130, rho_max_factor=8.0, n_min=-40, n_max=40, nr_fourier=100, nphi_fourier=200)
@@ -75,10 +75,10 @@ def main() -> None:
     style_axes(axes[1], r"Radial truncation $P_{max}$", r"$\sigma_p$", "(b)")
     style_axes(axes[2], r"Radial truncation $P_{max}$", r"Captured power $P_{cap}$", "(c)")
     axes[0].legend(fontsize=8)
-    fig.suptitle("Fig. 8  Modal-decomposition convergence")
-    fig.savefig(out_dir / "fig08_modal_convergence.png", dpi=300)
-    save_npz(out_dir, "fig08_modal_convergence", lmax_list=lmax_list, pmax_list=pmax_list, sigma_l=sigma_l, sigma_p=sigma_p, pcap=pcap)
-    save_params(out_dir, "fig08_modal_convergence", {"params": params, "alpha": alpha, "cases": cases})
+    fig.suptitle("Modal-decomposition convergence  Modal-decomposition convergence")
+    fig.savefig(out_dir / "modal_decomposition_convergence.png", dpi=300)
+    save_npz(out_dir, "modal_decomposition_convergence", lmax_list=lmax_list, pmax_list=pmax_list, sigma_l=sigma_l, sigma_p=sigma_p, pcap=pcap)
+    save_params(out_dir, "modal_decomposition_convergence", {"params": params, "alpha": alpha, "cases": cases})
     plt.close(fig)
 
 

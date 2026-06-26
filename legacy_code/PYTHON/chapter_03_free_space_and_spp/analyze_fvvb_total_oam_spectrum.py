@@ -1,4 +1,4 @@
-"""Fig. 3：不同分数阶拓扑荷 alpha 下 FVVB 的总 OAM 谱。
+"""FVVB total OAM spectrum：不同分数阶拓扑荷 alpha 下 FVVB 的总 OAM 谱。
 
 本脚本用于展示 FVVB 总场在整数 OAM 阶 ell 上的归一化能量权重 mu_l。
 OAM 谱由两个圆偏振分量合并得到；Pcap 表示当前 l_list 截断范围捕获的
@@ -12,11 +12,11 @@ import numpy as np
 from fvvb_core import default_params, ensure_output_dir, fvvb_field, get_grid_from_params, save_npz, save_params, style_axes, total_oam_spectrum_from_vector
 
 
-SCRIPT = "fig03_fvvb_oam_spectrum"
+SCRIPT = "fvvb_total_oam_spectrum"
 
 
 def main() -> None:
-    # 论文参数指示：Fig.3 最终 OAM 谱建议设置为：
+    # ???????FVVB ? OAM ???????
     # grid_n=400, rho_max_factor=8.0, n_min=-200, n_max=200, lmax=40,
     # nr_fourier=320, nphi_fourier=720；同时检查每个 alpha 的 Pcap 是否接近 1。
     params = default_params(grid_n=180, rho_max_factor=8.0, n_min=-60, n_max=60, lmax=8, nr_fourier=140, nphi_fourier=256)
@@ -41,10 +41,10 @@ def main() -> None:
         ax.set_xlabel(r"OAM order $\ell$")
     for ax in axes[:, 0]:
         ax.set_ylabel(r"$\mu_\ell$")
-    fig.suptitle("Fig. 3  FVVB total OAM spectra")
-    fig.savefig(out_dir / "fig03_fvvb_oam_spectrum.png", dpi=300)
-    save_npz(out_dir, "fig03_fvvb_oam_spectrum", alpha_list=np.array(alpha_list), l_list=l_list, spectra=np.array(spectra))
-    save_params(out_dir, "fig03_fvvb_oam_spectrum", {"params": params, "alpha_list": alpha_list, "dx": dx, "dy": dy})
+    fig.suptitle("FVVB total OAM spectrum  FVVB total OAM spectra")
+    fig.savefig(out_dir / "fvvb_total_oam_spectrum.png", dpi=300)
+    save_npz(out_dir, "fvvb_total_oam_spectrum", alpha_list=np.array(alpha_list), l_list=l_list, spectra=np.array(spectra))
+    save_params(out_dir, "fvvb_total_oam_spectrum", {"params": params, "alpha_list": alpha_list, "dx": dx, "dy": dy})
     plt.close(fig)
 
 

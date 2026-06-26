@@ -1,4 +1,4 @@
-"""Fig. 10：SPP 调制前后 FVVB 的 LG 径向模态谱 nu_p 及其差分。
+"""Radial LG spectrum difference：SPP 调制前后 FVVB 的 LG 径向模态谱 nu_p 及其差分。
 
 本脚本针对 sigma+ 圆偏振分量计算 LG_p^ell 投影，比较分数阶 SPP 与整数
 SPP 调制前后的径向模态能量分布变化。nu_p 为对所有 ell 求和后的径向阶
@@ -12,7 +12,7 @@ import numpy as np
 from fvvb_core import default_params, apply_spp_to_vector, ensure_output_dir, fvvb_field, get_grid_from_params, radial_lg_spectrum, radial_width_from_mpl, save_npz, save_params, style_axes
 
 
-SCRIPT = "fig10_radial_spectrum_diff"
+SCRIPT = "radial_lg_spectrum_difference"
 
 
 def radial_case(alpha: float, fork_ell: float, params, X, Y, R, PHI, dx, dy):
@@ -30,9 +30,9 @@ def radial_case(alpha: float, fork_ell: float, params, X, Y, R, PHI, dx, dy):
 
 
 def main() -> None:
-    # 论文参数指示：Fig.10 最终径向谱建议设置为：
+    # ????????? LG ???????????
     # grid_n=400, rho_max_factor=8.0, n_min=-200, n_max=200, lmax=40, pmax=35；
-    # LG 分析基腰 w_an=params.wz，若论文讨论基腰敏感性需与 Fig.S2 对照。
+    # LG 分析基腰 w_an=params.wz，若论文讨论基腰敏感性需与 LG basis-waist sensitivity 对照。
     params = default_params(grid_n=120, rho_max_factor=8.0, n_min=-40, n_max=40, lmax=10, pmax=8)
     alpha = 0.5  # [关键变量] 入射分数阶拓扑荷。
     fork_fractional = 0.5  # 分数阶 SPP 调制荷 q。
@@ -58,10 +58,10 @@ def main() -> None:
     style_axes(axes[1, 1], "Radial order p", r"$\Delta\nu_p$", "(d)")
     axes[0, 0].legend(fontsize=8)
     axes[1, 0].legend(fontsize=8)
-    fig.suptitle("Fig. 10  Radial modal spectra before/after SPP")
-    fig.savefig(out_dir / "fig10_radial_spectrum_diff.png", dpi=300)
-    save_npz(out_dir, "fig10_radial_spectrum_diff", p=p, nu0_fractional=nu0_f, nu1_fractional=nu1_f, dnu_fractional=dnu_f, nu0_integer=nu0_i, nu1_integer=nu1_i, dnu_integer=dnu_i)
-    save_params(out_dir, "fig10_radial_spectrum_diff", {"params": params, "alpha": alpha, "fork_fractional": fork_fractional, "fork_integer": fork_integer, "dx": dx, "dy": dy})
+    fig.suptitle("Radial LG spectrum difference  Radial modal spectra before/after SPP")
+    fig.savefig(out_dir / "radial_lg_spectrum_difference.png", dpi=300)
+    save_npz(out_dir, "radial_lg_spectrum_difference", p=p, nu0_fractional=nu0_f, nu1_fractional=nu1_f, dnu_fractional=dnu_f, nu0_integer=nu0_i, nu1_integer=nu1_i, dnu_integer=dnu_i)
+    save_params(out_dir, "radial_lg_spectrum_difference", {"params": params, "alpha": alpha, "fork_fractional": fork_fractional, "fork_integer": fork_integer, "dx": dx, "dy": dy})
     plt.close(fig)
 
 

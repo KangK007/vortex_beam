@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 def main() -> None:
@@ -16,7 +16,12 @@ def main() -> None:
     """
     cmd = [
         sys.executable,
-        str(PROJECT_ROOT / "scripts" / "run_single_simulation.py"),
+        str(
+            PROJECT_ROOT
+            / "scripts"
+            / "field_generation"
+            / "simulate_single_fvvb_beam.py"
+        ),
         "--config",
         str(PROJECT_ROOT / "configs" / "default.yaml"),
     ]
@@ -25,4 +30,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

@@ -1,4 +1,4 @@
-"""Fig. 9：FVVB OAM 谱宽 sigma_L 随入射 alpha 和 SPP 调制荷 q 的变化。
+"""OAM width vs alpha and SPP：FVVB OAM 谱宽 sigma_L 随入射 alpha 和 SPP 调制荷 q 的变化。
 
 左图固定若干 q 扫描 alpha；右图固定若干 alpha 扫描 q。sigma_L 由归一化
 总 OAM 谱计算，表示整数 OAM 阶上的能量扩散程度。"""
@@ -11,7 +11,7 @@ import numpy as np
 from fvvb_core import default_params, apply_spp_to_vector, ensure_output_dir, fvvb_field, get_grid_from_params, save_npz, save_params, spectral_width, style_axes, total_oam_spectrum_from_vector
 
 
-SCRIPT = "fig09_oam_width_alpha_spp"
+SCRIPT = "oam_width_vs_alpha_and_spp"
 
 
 def sigma_l_for(alpha: float, fork_ell: float, params, X, Y, R, PHI) -> float:
@@ -24,7 +24,7 @@ def sigma_l_for(alpha: float, fork_ell: float, params, X, Y, R, PHI) -> float:
 
 
 def main() -> None:
-    # 论文参数指示：Fig.9 最终 sigma_L 扫描建议设置为：
+    # ???????OAM ?? alpha/SPP ????????
     # grid_n=400, rho_max_factor=8.0, n_min=-200, n_max=200, lmax=40,
     # nr_fourier=320, nphi_fourier=720；alpha_scan=np.arange(0.1,3.01,0.05)，
     # fork_scan=np.arange(0.0,3.01,0.05)，fork_cases=[0,0.5,1.0]。
@@ -48,10 +48,10 @@ def main() -> None:
     style_axes(axes[1], r"SPP charge $q$", r"$\sigma_L$", "(b)")
     axes[0].legend(fontsize=8)
     axes[1].legend(fontsize=8)
-    fig.suptitle("Fig. 9  FVVB OAM spectral width")
-    fig.savefig(out_dir / "fig09_oam_width_alpha_spp.png", dpi=300)
-    save_npz(out_dir, "fig09_oam_width_alpha_spp", alpha_scan=alpha_scan, fork_scan=fork_scan, sigma_vs_alpha=sigma_vs_alpha, sigma_vs_fork=sigma_vs_fork)
-    save_params(out_dir, "fig09_oam_width_alpha_spp", {"params": params, "fork_cases": fork_cases, "alpha_cases": alpha_cases, "dx": dx, "dy": dy})
+    fig.suptitle("OAM width vs alpha and SPP  FVVB OAM spectral width")
+    fig.savefig(out_dir / "oam_width_vs_alpha_and_spp.png", dpi=300)
+    save_npz(out_dir, "oam_width_vs_alpha_and_spp", alpha_scan=alpha_scan, fork_scan=fork_scan, sigma_vs_alpha=sigma_vs_alpha, sigma_vs_fork=sigma_vs_fork)
+    save_params(out_dir, "oam_width_vs_alpha_and_spp", {"params": params, "fork_cases": fork_cases, "alpha_cases": alpha_cases, "dx": dx, "dy": dy})
     plt.close(fig)
 
 

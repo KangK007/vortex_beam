@@ -7,10 +7,10 @@ Included:
 
 - Source modules under `src/`
 - YAML configs under `configs/`
-- Command-line scripts under `scripts/`
+- Topic-based command-line scripts under `scripts/`
 - Minimal notebooks under `notebooks/`
 - Tests under `tests/`
-- Legacy source files under `legacy_code/PYTHON/*.py`
+- Topic-renamed legacy source files under `legacy_code/PYTHON/`
 
 Excluded from the GitHub copy:
 
@@ -24,4 +24,3 @@ Before public release, confirm:
 - Whether the project should use an open-source license.
 - Whether thesis-specific legacy code should remain included.
 - Whether any unpublished experimental data or private paths appear in outputs.
-

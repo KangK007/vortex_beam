@@ -1,4 +1,4 @@
-"""Fig. 5：FVB 与 FVVB 的 OAM 谱宽 sigma_L 随分数阶拓扑荷 alpha 的变化。
+"""OAM width vs fractional charge：FVB 与 FVVB 的 OAM 谱宽 sigma_L 随分数阶拓扑荷 alpha 的变化。
 
 本脚本扫描 alpha，分别计算标量 FVB 和矢量 FVVB 的归一化 OAM 谱，再用
 spectral_width 得到 OAM 谱标准差 sigma_L。sigma_L 越大表示 OAM 能量分布
@@ -24,11 +24,11 @@ from fvvb_core import (
 )
 
 
-SCRIPT = "fig05_oam_width_vs_alpha"
+SCRIPT = "oam_width_vs_fractional_charge"
 
 
 def main() -> None:
-    # 论文参数指示：Fig.5 最终 sigma_L 曲线建议设置为：
+    # ???????OAM ?????????????????
     # grid_n=400, rho_max_factor=8.0, n_min=-200, n_max=200, lmax=40,
     # nr_fourier=320, nphi_fourier=720；alpha_list 建议步长 0.05 或 0.1 做收敛对比。
     params = default_params(grid_n=160, rho_max_factor=8.0, n_min=-50, n_max=50, lmax=10, nr_fourier=120, nphi_fourier=240)
@@ -51,11 +51,11 @@ def main() -> None:
     fig, ax = plt.subplots(figsize=(6.5, 4.5), constrained_layout=True)
     ax.plot(alpha_list, sigma_fvb, "o-", label="FVB", lw=1.4, ms=3)
     ax.plot(alpha_list, sigma_fvvb, "s-", label="FVVB", lw=1.4, ms=3)
-    style_axes(ax, r"Fractional topological charge $\alpha$", r"OAM spectral width $\sigma_L$", "Fig. 5")
+    style_axes(ax, r"Fractional topological charge $\alpha$", r"OAM spectral width $\sigma_L$", "OAM width vs fractional charge")
     ax.legend()
-    fig.savefig(out_dir / "fig05_oam_width_vs_alpha.png", dpi=300)
-    save_npz(out_dir, "fig05_oam_width_vs_alpha", alpha_list=alpha_list, sigma_fvb=np.array(sigma_fvb), sigma_fvvb=np.array(sigma_fvvb))
-    save_params(out_dir, "fig05_oam_width_vs_alpha", {"params": params, "dx": dx, "dy": dy})
+    fig.savefig(out_dir / "oam_width_vs_fractional_charge.png", dpi=300)
+    save_npz(out_dir, "oam_width_vs_fractional_charge", alpha_list=alpha_list, sigma_fvb=np.array(sigma_fvb), sigma_fvvb=np.array(sigma_fvvb))
+    save_params(out_dir, "oam_width_vs_fractional_charge", {"params": params, "dx": dx, "dy": dy})
     plt.close(fig)
 
 
