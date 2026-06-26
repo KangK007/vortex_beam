@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local IDE/editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Generated simulation outputs
+results/*
+!results/.gitkeep
+!results/figures/
+!results/figures/.gitkeep
+!results/data/
+!results/data/.gitkeep
+!results/logs/
+!results/logs/.gitkeep
+thesis_figures/*
+!thesis_figures/.gitkeep
+
+# Legacy generated outputs copied for local archival only
+legacy_code/PYTHON/outputs/
+legacy_code/PYTHON/**/fig*.png
+legacy_code/PYTHON/**/*.png
+legacy_code/PYTHON/**/*.npz
+legacy_code/PYTHON/**/*_params.json
+legacy_code/PYTHON/**/run_turbulence_scan_summary.npz
+legacy_code/PYTHON/**/run_turbulence_scan_params.json
+
+# Large experimental/raw data should stay out of GitHub by default
+data/
+raw/
+original/
+experiment/
+measurements/
+

@@ -1,0 +1,41 @@
+run:
+  name: lg_beam_single
+  output_root: results
+
+beam:
+  wavelength: 632.8e-9
+  w0: 2.0e-3
+  z: 0.2
+  alpha: 0.5
+  initial_plane: analytic_z
+  n_min: -80
+  n_max: 80
+  grid_n: 256
+  rho_max_factor: 4.0
+  lmax: 20
+  pmax: 20
+  nr_fourier: 240
+  nphi_fourier: 480
+
+spp:
+  enabled: true
+  fork_ell: 1.0
+
+propagation:
+  enabled: false
+  distance: 0.0
+  basis: linear
+  method: same
+  pad_factor: 1.0
+  check_finite: true
+
+turbulence:
+  enabled: false
+  cn2: 0.0
+  n_screens: 0
+  dz:
+  inner_scale: 2.0e-3
+  outer_scale: 50.0
+  seed: 1
+  spectrum: von_karman
+
